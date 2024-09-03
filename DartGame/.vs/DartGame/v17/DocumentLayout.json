@@ -7,7 +7,7 @@
       "RelativeMoniker": "D:0:0:{09D60A6D-103B-41BD-965C-02C304AB37A6}|DartGame\\DartGame.vbproj|solutionrelative:dartgame\\dartboard.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{09D60A6D-103B-41BD-965C-02C304AB37A6}|DartGame\\DartGame.vbproj|c:\\users\\jackel\\source\\repos\\dartgame\\dartgame\\dartboard.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
+      "AbsoluteMoniker": "D:0:0:{09D60A6D-103B-41BD-965C-02C304AB37A6}|DartGame\\DartGame.vbproj|C:\\Users\\jackel\\source\\repos\\DartGame\\dartgame\\dartboard.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
       "RelativeMoniker": "D:0:0:{09D60A6D-103B-41BD-965C-02C304AB37A6}|DartGame\\DartGame.vbproj|solutionrelative:dartgame\\dartboard.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
     }
   ],
@@ -18,21 +18,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "DartBoard.vb",
-              "DocumentMoniker": "C:\\Users\\jackel\\source\\repos\\DartGame\\DartGame\\DartBoard.vb",
-              "RelativeDocumentMoniker": "DartGame\\DartBoard.vb",
-              "ToolTip": "C:\\Users\\jackel\\source\\repos\\DartGame\\DartGame\\DartBoard.vb",
-              "RelativeToolTip": "DartGame\\DartBoard.vb",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAAABAAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2024-09-03T02:11:43.216Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Document",
               "DocumentIndex": 1,
@@ -44,6 +31,19 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
               "WhenOpened": "2024-09-03T02:09:34.782Z",
               "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DartBoard.vb",
+              "DocumentMoniker": "C:\\Users\\jackel\\source\\repos\\DartGame\\DartGame\\DartBoard.vb",
+              "RelativeDocumentMoniker": "DartGame\\DartBoard.vb",
+              "ToolTip": "C:\\Users\\jackel\\source\\repos\\DartGame\\DartGame\\DartBoard.vb",
+              "RelativeToolTip": "DartGame\\DartBoard.vb",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAYwDYAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2024-09-03T02:11:43.216Z",
+              "EditorCaption": ""
             }
           ]
         }
