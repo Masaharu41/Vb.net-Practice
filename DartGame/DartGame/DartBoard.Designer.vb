@@ -29,6 +29,7 @@ Partial Class DartBoard
         '
         'CircleButton
         '
+        Me.CircleButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.CircleButton.Location = New System.Drawing.Point(28, 522)
         Me.CircleButton.Name = "CircleButton"
         Me.CircleButton.Size = New System.Drawing.Size(98, 41)
@@ -38,9 +39,12 @@ Partial Class DartBoard
         '
         'DartBoardPictureBox
         '
-        Me.DartBoardPictureBox.Location = New System.Drawing.Point(50, 40)
+        Me.DartBoardPictureBox.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.DartBoardPictureBox.Location = New System.Drawing.Point(61, 36)
         Me.DartBoardPictureBox.Name = "DartBoardPictureBox"
-        Me.DartBoardPictureBox.Size = New System.Drawing.Size(1057, 441)
+        Me.DartBoardPictureBox.Size = New System.Drawing.Size(1016, 431)
         Me.DartBoardPictureBox.TabIndex = 1
         Me.DartBoardPictureBox.TabStop = False
         '

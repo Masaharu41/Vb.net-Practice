@@ -20,8 +20,17 @@ Public Class DartBoard
         Dim pi As Double = Math.PI
         Dim screenWidth = DartBoardPictureBox.Width
         Dim screenHeight = DartBoardPictureBox.Height
-        Dim rect As New Rectangle(10, 10, CInt((screenWidth - 10)), CInt(screenHeight - 10))
-        g.DrawEllipse(pen, rect)
+        DartBoardPictureBox.Refresh()
+
+        If screenHeight < screenWidth Then
+            Dim rect As New Rectangle(CInt((screenWidth - screenHeight) / 2), 0, screenHeight, screenHeight)
+            g.DrawEllipse(pen, rect)
+        Else
+            Dim rect As New Rectangle(0, CInt((screenHeight - screenWidth) / 2), screenWidth, screenWidth)
+            g.DrawEllipse(pen, rect)
+        End If
+
+        ' g.DrawEllipse(pen, rect)
 
 
 
@@ -29,28 +38,29 @@ Public Class DartBoard
 
     Private Sub CircleButton_Click(sender As Object, e As EventArgs) Handles CircleButton.Click
         DrawDartBoard()
-        DartThrow()
+        ' DartThrow(1)
     End Sub
 
-    Sub DartThrow()
-        Dim g As Graphics = DartBoardPictureBox.CreateGraphics
-        Dim pen As New Pen(Color.DarkRed, 5)
-        Dim centerX As Integer, centerY As Integer
+    'Sub DartThrow(offset As Integer)
+    '    Dim g As Graphics = DartBoardPictureBox.CreateGraphics
+    '    Dim pen As New Pen(Color.DarkRed, 5)
+    '    Dim centerX As Integer, centerY As Integer
+    '    Dim referenceX = DartBoardPictureBox.Width
+    '    Dim referenceY = DartBoardPictureBox.Height
+    '    centerX = DartCord() + CInt(centerX / 2)
+    '    centerY = DartCord() + CInt(centerY / 2)
 
-        centerX = DartCord()
-        centerY = DartCord()
-
-        g.DrawLine(pen, centerX, centerY - 10, centerX, centerY + 10)
-        g.DrawLine(pen, centerX - 10, centerY, centerX + 10, centerY)
+    '    g.DrawLine(pen, centerX, centerY - 10, centerX, centerY + 10)
+    '    g.DrawLine(pen, centerX - 10, centerY, centerX + 10, centerY)
 
 
-    End Sub
+    'End Sub
 
     Function DartCord() As Integer
         Dim temp As Integer
         Dim screenWidth = DartBoardPictureBox.Width
         Randomize()
-        temp = CInt(Rnd() * 250) + CInt(screenWidth / 8)
+        temp = CInt(Rnd() * (screenWidth - (screenWidth - 1 / 8) / 10))
         Return temp
     End Function
 End Class
