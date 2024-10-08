@@ -5,8 +5,18 @@ Imports System.Security.Cryptography
 
 Public Class ShiftingArrays
     Private Sub ShiftingArrays_Click(sender As Object, e As EventArgs) Handles Me.Click
-        ShiftArray(RandomNumberFrom(0, ArrayPictureBox.Height))
+        plot(ShiftArray(RandomNumberFrom(0, ArrayPictureBox.Height)))
         Console.Read()
+    End Sub
+
+    Sub plot(plotdata() As Integer)
+        Dim g As Graphics = ArrayPictureBox.CreateGraphics
+        Dim pen As New Pen(Color.Azure, 15)
+        Dim height% = ArrayPictureBox.Height
+
+        For x = 0 To UBound(plotdata)
+            g.DrawLine(pen, x, plotdata(x), x + 1, plotdata(x))
+        Next
     End Sub
 
     Function ShiftArray(newdata As Integer) As Integer()
@@ -50,5 +60,13 @@ Public Class ShiftingArrays
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles ExitButton.Click
         Me.Close()
+    End Sub
+
+    Private Sub PlotButton_Click(sender As Object, e As EventArgs) Handles PlotButton.Click
+        ArrayPictureBox.Refresh()
+
+        For i = 0 To 100
+            plot(ShiftArray(RandomNumberFrom(0, ArrayPictureBox.Height)))
+        Next
     End Sub
 End Class
