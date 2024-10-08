@@ -5,17 +5,19 @@ Imports System.Security.Cryptography
 
 Public Class ShiftingArrays
     Private Sub ShiftingArrays_Click(sender As Object, e As EventArgs) Handles Me.Click
-        plot(ShiftArray(RandomNumberFrom(0, ArrayPictureBox.Height)))
+        plot(ShiftArray(RandomNumberFrom(100, 200)))
         Console.Read()
     End Sub
 
     Sub plot(plotdata() As Integer)
         Dim g As Graphics = ArrayPictureBox.CreateGraphics
-        Dim pen As New Pen(Color.Azure, 15)
+        Dim pen As New Pen(Color.Azure, 5)
         Dim height% = ArrayPictureBox.Height
-
+        Dim oldX%, oldY%
         For x = 0 To UBound(plotdata)
-            g.DrawLine(pen, x, plotdata(x), x + 1, plotdata(x))
+            g.DrawLine(pen, oldX, oldY, x + 20, plotdata(x))
+            oldX = x
+            oldY = plotdata(x)
         Next
     End Sub
 
