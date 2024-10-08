@@ -1,12 +1,20 @@
 ﻿Option Explicit On
 Option Strict On
 Option Compare Binary
+Imports System.Security.Cryptography
 
 Public Class ShiftingArrays
     Private Sub ShiftingArrays_Click(sender As Object, e As EventArgs) Handles Me.Click
-        For i = 1 To 100
-            Console.WriteLine(RandomNumberFrom)
+        Dim randomness(10) As Integer
+        For i = 1 To 1000
+            randomness(RandomNumberFrom(0, 10)) += 1
         Next
+
+        For i = LBound(randomness) To UBound(randomness)
+
+            Console.Write("| " & CStr(randomness(i)).PadLeft(4) & " |")
+        Next
+        Console.WriteLine()
     End Sub
 
     ''' <summary>
