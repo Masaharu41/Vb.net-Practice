@@ -11,11 +11,12 @@ Public Class ShiftingArrays
 
     Sub plot(plotdata() As Integer)
         Dim g As Graphics = ArrayPictureBox.CreateGraphics
-        Dim pen As New Pen(Color.Azure, 5)
+        Dim pen As New Pen(Color.Black, 5)
         Dim height% = ArrayPictureBox.Height
         Dim oldX%, oldY%
+        Dim widthUnit% = CInt(ArrayPictureBox.Width / 100)
         For x = 0 To UBound(plotdata)
-            g.DrawLine(pen, oldX, oldY, x + 20, plotdata(x))
+            g.DrawLine(pen, oldX, oldY, x * widthUnit, plotdata(x))
             oldX = x
             oldY = plotdata(x)
         Next
@@ -67,8 +68,8 @@ Public Class ShiftingArrays
     Private Sub PlotButton_Click(sender As Object, e As EventArgs) Handles PlotButton.Click
         ArrayPictureBox.Refresh()
 
-        For i = 0 To 100
-            plot(ShiftArray(RandomNumberFrom(0, ArrayPictureBox.Height)))
-        Next
+        '  For i = 0 To 100
+        plot(ShiftArray(RandomNumberFrom(0, ArrayPictureBox.Height)))
+        ' Next
     End Sub
 End Class
