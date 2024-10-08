@@ -8,17 +8,17 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("RLC Calculator")>
+<Assembly: AssemblyTitle("ShiftingArrays")>
 <Assembly: AssemblyDescription("")>
 <Assembly: AssemblyCompany("")>
-<Assembly: AssemblyProduct("RLC Calculator")>
+<Assembly: AssemblyProduct("ShiftingArrays")>
 <Assembly: AssemblyCopyright("Copyright ©  2024")>
 <Assembly: AssemblyTrademark("")>
 
 <Assembly: ComVisible(False)>
 
 'The following GUID is for the ID of the typelib if this project is exposed to COM
-<Assembly: Guid("5d233d76-95c2-49b1-9b73-e454b22e5221")>
+<Assembly: Guid("07334dcb-537e-4157-9eb2-43a0d80c44d9")>
 
 ' Version information for an assembly consists of the following four values:
 '

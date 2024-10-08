@@ -32,7 +32,7 @@ Namespace My
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
         Protected Overrides Sub OnCreateMainForm()
-            Me.MainForm = Global.RLC_Calculator.RLCCalculator
+            Me.MainForm = Global.ShiftingArrays.ShiftingArrays
         End Sub
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35303.130
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "RLC Calculator", "RLC Calculator\RLC Calculator.vbproj", "{604BFCCF-A52B-4BA0-87D0-AE7357753699}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ShiftingArrays", "ShiftingArrays\ShiftingArrays.vbproj", "{458A63BD-F014-4165-99A1-C024727D68AE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{604BFCCF-A52B-4BA0-87D0-AE7357753699}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{604BFCCF-A52B-4BA0-87D0-AE7357753699}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{604BFCCF-A52B-4BA0-87D0-AE7357753699}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{604BFCCF-A52B-4BA0-87D0-AE7357753699}.Release|Any CPU.Build.0 = Release|Any CPU
+		{458A63BD-F014-4165-99A1-C024727D68AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{458A63BD-F014-4165-99A1-C024727D68AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{458A63BD-F014-4165-99A1-C024727D68AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{458A63BD-F014-4165-99A1-C024727D68AE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {A6CB8E9F-396D-4B98-B2B1-3E1ED0D2DF96}
+		SolutionGuid = {FB7200FD-4395-415F-9774-D267717949A9}
 	EndGlobalSection
 EndGlobal
