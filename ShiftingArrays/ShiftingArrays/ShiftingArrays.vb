@@ -11,12 +11,13 @@ Public Class ShiftingArrays
 
     Sub plot(plotdata() As Integer)
         Dim g As Graphics = ArrayPictureBox.CreateGraphics
-        Dim pen As New Pen(Color.Black, 5)
+        Dim pen As New Pen(Color.Black)
         Dim height% = ArrayPictureBox.Height
         Dim oldX%, oldY%
         Dim widthUnit% = CInt(ArrayPictureBox.Width / 100)
+        g.ScaleTransform(CSng(ArrayPictureBox.Width / 100), 1)
         For x = 0 To UBound(plotdata)
-            g.DrawLine(pen, oldX, oldY, x * widthUnit, plotdata(x))
+            g.DrawLine(pen, oldX, oldY, x, plotdata(x))
             oldX = x
             oldY = plotdata(x)
         Next
