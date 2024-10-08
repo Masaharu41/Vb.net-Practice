@@ -5,6 +5,16 @@ Imports System.Security.Cryptography
 
 Public Class ShiftingArrays
     Private Sub ShiftingArrays_Click(sender As Object, e As EventArgs) Handles Me.Click
+        ShiftArray(RandomNumberFrom)
+    End Sub
+
+    Sub ShiftArray(newdata As Integer)
+        Static Dim data(99) As Integer
+
+        For i = LBound(data) To UBound(data) - 1
+            data(i) = data(i + 1)
+        Next
+
 
     End Sub
 
