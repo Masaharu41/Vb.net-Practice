@@ -5,18 +5,20 @@ Imports System.Security.Cryptography
 
 Public Class ShiftingArrays
     Private Sub ShiftingArrays_Click(sender As Object, e As EventArgs) Handles Me.Click
-        ShiftArray(RandomNumberFrom)
+        ShiftArray(RandomNumberFrom(0, ArrayPictureBox.Height))
+        Console.Read()
     End Sub
 
-    Sub ShiftArray(newdata As Integer)
+    Function ShiftArray(newdata As Integer) As Integer()
         Static Dim data(99) As Integer
 
         For i = LBound(data) To UBound(data) - 1
             data(i) = data(i + 1)
         Next
-
-
-    End Sub
+        data(UBound(data)) = newdata
+        'Console.Read()
+        Return data
+    End Function
 
     Sub CreateRandomness()
         Dim randomness(10) As Integer
@@ -46,5 +48,7 @@ Public Class ShiftingArrays
 
     End Function
 
-
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles ExitButton.Click
+        Me.Close()
+    End Sub
 End Class
