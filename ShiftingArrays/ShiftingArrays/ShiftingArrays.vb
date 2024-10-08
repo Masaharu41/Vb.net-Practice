@@ -5,6 +5,10 @@ Imports System.Security.Cryptography
 
 Public Class ShiftingArrays
     Private Sub ShiftingArrays_Click(sender As Object, e As EventArgs) Handles Me.Click
+
+    End Sub
+
+    Sub CreateRandomness()
         Dim randomness(10) As Integer
         For i = 1 To 1000
             randomness(RandomNumberFrom(0, 10)) += 1
@@ -15,6 +19,7 @@ Public Class ShiftingArrays
             Console.Write("| " & CStr(randomness(i)).PadLeft(4) & " |")
         Next
         Console.WriteLine()
+
     End Sub
 
     ''' <summary>
