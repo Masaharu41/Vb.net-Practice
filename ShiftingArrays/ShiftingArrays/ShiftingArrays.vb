@@ -72,5 +72,13 @@ Public Class ShiftingArrays
         '  For i = 0 To 100
         plot(ShiftArray(RandomNumberFrom(0, ArrayPictureBox.Height)))
         ' Next
+
+    End Sub
+
+    Private Sub Timer_Tick(sender As Object, e As EventArgs) Handles Timer.Tick
+        ArrayPictureBox.Refresh()
+
+        '  For i = 0 To 100
+        plot(ShiftArray(RandomNumberFrom(0, ArrayPictureBox.Height)))
     End Sub
 End Class
