@@ -2,6 +2,8 @@
 Option Strict On
 Option Compare Binary
 Imports System.Security.Cryptography
+Imports Microsoft.VisualBasic.Devices.ComputerInfo
+
 
 Public Class ShiftingArrays
     Private Sub ShiftingArrays_Click(sender As Object, e As EventArgs) Handles Me.Click
@@ -79,6 +81,30 @@ Public Class ShiftingArrays
         ArrayPictureBox.Refresh()
 
         '  For i = 0 To 100
-        plot(ShiftArray(RandomNumberFrom(0, ArrayPictureBox.Height)))
+        '  plot(ShiftArray(Sensor()))
+        plot(ShiftArray(MouseY()))
+    End Sub
+
+    Function Sensor() As Integer
+        Dim ram As Integer
+        ram = CInt(CInt(My.Computer.Info.AvailablePhysicalMemory) / 1000)
+
+
+        Return ram
+    End Function
+
+    Function MouseY(Optional currentY As Integer = -1) As Integer
+        Static _mouseY As Integer
+        If currentY <> -1 Then
+
+            _mouseY = currentY
+        End If
+
+        Return _mouseY
+
+    End Function
+
+    Private Sub ArrayPictureBox_MouseMove(sender As Object, e As MouseEventArgs) Handles ArrayPictureBox.MouseMove
+        MouseY(e.Y)
     End Sub
 End Class

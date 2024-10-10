@@ -67,7 +67,6 @@ Partial Class ShiftingArrays
         'Timer
         '
         Me.Timer.Enabled = True
-        Me.Timer.Interval = 300
         '
         'ShiftingArrays
         '
