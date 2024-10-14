@@ -58,4 +58,8 @@ Public Class EuartForm
             PwTrackBar.Value -= 1
         End If
     End Sub
+
+    Private Sub SerialPort_DataReceived(sender As Object, e As SerialDataReceivedEventArgs) Handles SerialPort.DataReceived
+
+    End Sub
 End Class

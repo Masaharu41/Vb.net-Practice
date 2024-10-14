@@ -32,7 +32,7 @@ Partial Class EuartForm
         '
         'PwTrackBar
         '
-        Me.PwTrackBar.Location = New System.Drawing.Point(35, 36)
+        Me.PwTrackBar.Location = New System.Drawing.Point(35, 26)
         Me.PwTrackBar.Maximum = 20
         Me.PwTrackBar.Name = "PwTrackBar"
         Me.PwTrackBar.Size = New System.Drawing.Size(742, 90)
