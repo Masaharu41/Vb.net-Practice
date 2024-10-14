@@ -44,7 +44,7 @@ Partial Class EuartForm
         Me.SendButton.Name = "SendButton"
         Me.SendButton.Size = New System.Drawing.Size(155, 46)
         Me.SendButton.TabIndex = 1
-        Me.SendButton.Text = "Send"
+        Me.SendButton.Text = "&Send"
         Me.SendButton.UseVisualStyleBackColor = True
         '
         'ExitButton
