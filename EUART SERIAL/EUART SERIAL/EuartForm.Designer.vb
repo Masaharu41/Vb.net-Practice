@@ -26,6 +26,7 @@ Partial Class EuartForm
         Me.SerialPort = New System.IO.Ports.SerialPort(Me.components)
         Me.PwTrackBar = New System.Windows.Forms.TrackBar()
         Me.SendButton = New System.Windows.Forms.Button()
+        Me.ExitButton = New System.Windows.Forms.Button()
         CType(Me.PwTrackBar, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -46,11 +47,21 @@ Partial Class EuartForm
         Me.SendButton.Text = "Send"
         Me.SendButton.UseVisualStyleBackColor = True
         '
+        'ExitButton
+        '
+        Me.ExitButton.Location = New System.Drawing.Point(196, 122)
+        Me.ExitButton.Name = "ExitButton"
+        Me.ExitButton.Size = New System.Drawing.Size(153, 46)
+        Me.ExitButton.TabIndex = 2
+        Me.ExitButton.Text = "Exit"
+        Me.ExitButton.UseVisualStyleBackColor = True
+        '
         'EuartForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(12.0!, 25.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 583)
+        Me.Controls.Add(Me.ExitButton)
         Me.Controls.Add(Me.SendButton)
         Me.Controls.Add(Me.PwTrackBar)
         Me.Name = "EuartForm"
@@ -64,4 +75,5 @@ Partial Class EuartForm
     Friend WithEvents SerialPort As IO.Ports.SerialPort
     Friend WithEvents PwTrackBar As TrackBar
     Friend WithEvents SendButton As Button
+    Friend WithEvents ExitButton As Button
 End Class
