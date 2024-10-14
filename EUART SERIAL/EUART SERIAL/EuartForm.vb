@@ -13,26 +13,34 @@ Public Class EuartForm
         'DummyData()
     End Sub
     Sub DummyData()
+        'Gives an alternating output. makes seeing baud easier
         Dim data(1) As Byte
         data(0) = &H55
         data(1) = &H55
         SerialPort.Write(data, 0, 2)
     End Sub
+
+    ''' <summary>
+    ''' Creates a byte array with valid start character and byte to be transmitted
+    ''' </summary>
     Sub SendData()
         Dim pulse As Byte = PulseWidth()
         Dim data(1) As Byte
         data(0) = &H24
-        data(1) = pulse Xor &HFF
+        data(1) = pulse ' Xor &HFF ' gives the complement of the byte value
 
         SerialPort.Write(data, 0, 2)
 
 
     End Sub
 
-
+    ''' <summary>
+    ''' Calculates the desired pulse width for servo based on slider
+    ''' </summary>
+    ''' <returns></returns>
     Function PulseWidth() As Byte
         Dim pulse As Byte
-        pulse = CByte(CInt(PwTrackBar.Value) * 6)
+        pulse = CByte(CInt(PwTrackBar.Value) * 6 + 32)
 
         Return pulse
     End Function
