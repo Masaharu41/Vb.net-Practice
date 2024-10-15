@@ -27,8 +27,12 @@ Partial Class EuartForm
         Me.PwTrackBar = New System.Windows.Forms.TrackBar()
         Me.SendButton = New System.Windows.Forms.Button()
         Me.ExitButton = New System.Windows.Forms.Button()
+        Me.DisplayLabel = New System.Windows.Forms.Label()
         CType(Me.PwTrackBar, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
+        '
+        'SerialPort
+        '
         '
         'PwTrackBar
         '
@@ -56,11 +60,21 @@ Partial Class EuartForm
         Me.ExitButton.Text = "Exit"
         Me.ExitButton.UseVisualStyleBackColor = True
         '
+        'DisplayLabel
+        '
+        Me.DisplayLabel.AutoSize = True
+        Me.DisplayLabel.Location = New System.Drawing.Point(30, 227)
+        Me.DisplayLabel.Name = "DisplayLabel"
+        Me.DisplayLabel.Size = New System.Drawing.Size(77, 25)
+        Me.DisplayLabel.TabIndex = 3
+        Me.DisplayLabel.Text = "Label1"
+        '
         'EuartForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(12.0!, 25.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 583)
+        Me.Controls.Add(Me.DisplayLabel)
         Me.Controls.Add(Me.ExitButton)
         Me.Controls.Add(Me.SendButton)
         Me.Controls.Add(Me.PwTrackBar)
@@ -76,4 +90,5 @@ Partial Class EuartForm
     Friend WithEvents PwTrackBar As TrackBar
     Friend WithEvents SendButton As Button
     Friend WithEvents ExitButton As Button
+    Friend WithEvents DisplayLabel As Label
 End Class

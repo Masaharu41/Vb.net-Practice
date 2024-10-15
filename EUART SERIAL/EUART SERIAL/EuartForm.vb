@@ -2,10 +2,19 @@
 Imports System.Runtime.InteropServices
 
 Public Class EuartForm
+
+    Dim sent As Byte
+    Dim msb As Byte
+    Dim lsb As Byte
     Private Sub SerialCom_Load(sender As Object, e As EventArgs) Handles Me.Load
         SerialPort.PortName = "COM6"
         SerialPort.BaudRate = 9600
-        SerialPort.Open()
+        Try
+
+            SerialPort.Open()
+        Catch ex As Exception
+            MsgBox("A valid com device could not be detected")
+        End Try
     End Sub
 
     Private Sub SendButton_Click(sender As Object, e As EventArgs) Handles SendButton.Click
@@ -60,6 +69,26 @@ Public Class EuartForm
     End Sub
 
     Private Sub SerialPort_DataReceived(sender As Object, e As SerialDataReceivedEventArgs) Handles SerialPort.DataReceived
+        Dim data(SerialPort.BytesToRead) As Byte
+
+        sent = data(0)
+        msb = data(1)
+        lsb = data(2)
+        ReadRecieved()
+    End Sub
+
+
+    Sub ReadRecieved()
+        ' Validates that the data recieved has a valid start character
+        ' then proceeds to shift the lsb and display the recieved data
+        If CStr(sent) = "$" Then
+            lsb = lsb >> 6
+
+            DisplayLabel.Text = CStr(msb) & CStr(lsb)
+
+        Else
+        End If
 
     End Sub
+
 End Class
