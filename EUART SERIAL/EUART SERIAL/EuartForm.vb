@@ -1,10 +1,12 @@
 ﻿Imports System.IO.Ports
+Imports System.Reflection.Emit
 Imports System.Runtime.InteropServices
+Imports System.Text
 Imports System.Threading
 
 Public Class EuartForm
 
-    Dim sent As Byte
+    Dim sent(0) As Byte
     Dim msb As Byte
     Dim lsb As Byte
     Private Sub SerialCom_Load(sender As Object, e As EventArgs) Handles Me.Load
@@ -35,11 +37,12 @@ Public Class EuartForm
     ''' </summary>
     Sub SendData()
         Dim pulse As Byte = PulseWidth()
-        Dim data(1) As Byte
+        Dim data(2) As Byte
         data(0) = &H24
         data(1) = pulse ' Xor &HFF ' gives the complement of the byte value
+        data(2) = &H1
 
-        SerialPort.Write(data, 0, 2)
+        SerialPort.Write(data, 0, 3)
 
 
     End Sub
@@ -56,6 +59,27 @@ Public Class EuartForm
     End Function
 
 
+    Function ConvertVtoF() As Single
+        Dim totalCnt As Integer
+        Dim f As Single
+        Dim res As Single = 0.004887
+        totalCnt = CInt(msb) + CInt(lsb)
+
+        f = res * totalCnt * 100
+
+        Return f
+
+    End Function
+
+    Sub DisplayTemp()
+        Dim temp As Single = ConvertVtoF()
+        If Me.DisplayLabel.InvokeRequired Then
+            Me.DisplayLabel.Invoke(New MethodInvoker(Sub() DisplayLabel.Text = CStr(temp)))
+        Else
+            DisplayLabel.Text = "New Text"
+        End If
+        'DisplayLabel.Text = "Hello" 'CStr(temp)
+    End Sub
 
     Private Sub ExitButton_Click(sender As Object, e As EventArgs) Handles ExitButton.Click
         Me.Close()
@@ -74,7 +98,7 @@ Public Class EuartForm
         Dim data(SerialPort.BytesToRead) As Byte
         SerialPort.Read(data, 0, SerialPort.BytesToRead)
         '' may need to add a delay to reading the data
-        sent = data(0)
+        sent(0) = data(0)
         msb = data(1)
         lsb = data(2)
         ReadRecieved()
@@ -84,12 +108,19 @@ Public Class EuartForm
     Sub ReadRecieved()
         ' Validates that the data recieved has a valid start character
         ' then proceeds to shift the lsb and display the recieved data
-        If CStr(sent) = "$" Then
+        ' gives an output regardless to show what is sent in
+        If Encoding.ASCII.GetString(sent) = "$" Then
             lsb = lsb >> 6
 
-            DisplayLabel.Text = CStr(msb) & CStr(lsb)
-
+            ' DisplayLabel.Text = CStr(msb) & CStr(lsb)
+            Console.WriteLine(CStr(msb))
+            Console.WriteLine(CStr(lsb))
+            DisplayTemp()
         Else
+            'DisplayLabel.Text = CStr(sent) & " " & CStr(msb) & " " & CStr(lsb)
+            Console.WriteLine(CStr(sent(0)))
+            Console.WriteLine(CStr(msb))
+            Console.WriteLine(CStr(lsb))
         End If
 
     End Sub
