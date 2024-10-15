@@ -25,6 +25,7 @@ Partial Class SerialCom
         Me.components = New System.ComponentModel.Container()
         Me.SerialPort = New System.IO.Ports.SerialPort(Me.components)
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.SuspendLayout()
         '
         'SerialPort
@@ -39,11 +40,20 @@ Partial Class SerialCom
         Me.Button1.Text = "Button1"
         Me.Button1.UseVisualStyleBackColor = True
         '
+        'ComboBox1
+        '
+        Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Location = New System.Drawing.Point(639, 66)
+        Me.ComboBox1.Name = "ComboBox1"
+        Me.ComboBox1.Size = New System.Drawing.Size(121, 33)
+        Me.ComboBox1.TabIndex = 2
+        '
         'SerialCom
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(12.0!, 25.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.ComboBox1)
         Me.Controls.Add(Me.Button1)
         Me.Name = "SerialCom"
         Me.Text = "Form1"
@@ -53,4 +63,5 @@ Partial Class SerialCom
 
     Friend WithEvents SerialPort As IO.Ports.SerialPort
     Friend WithEvents Button1 As Button
+    Friend WithEvents ComboBox1 As ComboBox
 End Class

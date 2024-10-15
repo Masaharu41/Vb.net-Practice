@@ -3,9 +3,16 @@ Imports System.Threading.Thread
 
 Public Class SerialCom
     Private Sub SerialCom_Load(sender As Object, e As EventArgs) Handles Me.Load
-        SerialPort.PortName = "COM5"
-        SerialPort.BaudRate = 9600
-        SerialPort.Open()
+
+
+        Try
+            SerialPort.PortName = "COM5"
+            SerialPort.BaudRate = 9600
+            SerialPort.Open()
+
+        Catch ex As Exception
+
+        End Try
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
@@ -14,6 +21,14 @@ Public Class SerialCom
         data(0) = &B11110000
         SerialPort.Write(data, 0, 1)
         WriteDigital()
+    End Sub
+
+    Sub GetPorts()
+        For Each s As String In SerialPort.GetPortNames()
+            ComboBox1.Items.Add($"{s}")
+        Next
+
+        ComboBox1.SelectedIndex = 0
     End Sub
 
     Private Sub SerialPort_DataReceived(sender As Object, e As SerialDataReceivedEventArgs) Handles SerialPort.DataReceived

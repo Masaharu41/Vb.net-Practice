@@ -1,5 +1,6 @@
 ﻿Imports System.IO.Ports
 Imports System.Runtime.InteropServices
+Imports System.Threading
 
 Public Class EuartForm
 
@@ -69,8 +70,10 @@ Public Class EuartForm
     End Sub
 
     Private Sub SerialPort_DataReceived(sender As Object, e As SerialDataReceivedEventArgs) Handles SerialPort.DataReceived
+        Thread.Sleep(5)
         Dim data(SerialPort.BytesToRead) As Byte
-
+        SerialPort.Read(data, 0, SerialPort.BytesToRead)
+        '' may need to add a delay to reading the data
         sent = data(0)
         msb = data(1)
         lsb = data(2)
