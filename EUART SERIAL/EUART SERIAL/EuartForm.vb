@@ -63,7 +63,7 @@ Public Class EuartForm
         Dim totalCnt As Integer
         Dim f As Single
         Dim res As Single = 0.004887
-        totalCnt = CInt(msb) + CInt(lsb)
+        totalCnt = (CInt(msb) * 4) + CInt(lsb)
 
         f = res * totalCnt * 100
 
@@ -78,7 +78,6 @@ Public Class EuartForm
         Else
             DisplayLabel.Text = "New Text"
         End If
-        'DisplayLabel.Text = "Hello" 'CStr(temp)
     End Sub
 
     Private Sub ExitButton_Click(sender As Object, e As EventArgs) Handles ExitButton.Click
@@ -125,4 +124,7 @@ Public Class EuartForm
 
     End Sub
 
+    Private Sub ScanTimer_Tick(sender As Object, e As EventArgs) Handles ScanTimer.Tick
+        SendData()
+    End Sub
 End Class

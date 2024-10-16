@@ -28,6 +28,7 @@ Partial Class EuartForm
         Me.SendButton = New System.Windows.Forms.Button()
         Me.ExitButton = New System.Windows.Forms.Button()
         Me.DisplayLabel = New System.Windows.Forms.Label()
+        Me.ScanTimer = New System.Windows.Forms.Timer(Me.components)
         CType(Me.PwTrackBar, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -69,6 +70,11 @@ Partial Class EuartForm
         Me.DisplayLabel.TabIndex = 3
         Me.DisplayLabel.Text = "Label1"
         '
+        'ScanTimer
+        '
+        Me.ScanTimer.Enabled = True
+        Me.ScanTimer.Interval = 500
+        '
         'EuartForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(12.0!, 25.0!)
@@ -91,4 +97,5 @@ Partial Class EuartForm
     Friend WithEvents SendButton As Button
     Friend WithEvents ExitButton As Button
     Friend WithEvents DisplayLabel As Label
+    Friend WithEvents ScanTimer As Timer
 End Class
