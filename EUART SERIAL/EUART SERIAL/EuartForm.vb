@@ -67,13 +67,13 @@ Public Class EuartForm
 
     Private Sub SendButton_Click(sender As Object, e As EventArgs) Handles SendButton.Click
         SendData()
-        TimerRestart()
+        '  TimerRestart()
         'DummyData()
     End Sub
 
     Sub TimerRestart()
         ScanTimer.Stop()
-        ScanTimer.Interval = 250
+        ScanTimer.Interval = 500
         ScanTimer.Start()
     End Sub
     Sub DummyData()
@@ -124,7 +124,7 @@ Public Class EuartForm
     End Function
 
     Sub DisplayTemp()
-        Dim temp(4) As Single
+        Static temp(4) As Single
         Static runCnt As Integer
         Dim avResult As Single
         ConvertVtoF()
@@ -153,6 +153,9 @@ Public Class EuartForm
             Else
                 DisplayLabel.Text = "New Text"
             End If
+            For i = 0 To UBound(temp)
+                temp(i) = 0
+            Next
         End If
     End Sub
 
@@ -169,7 +172,7 @@ Public Class EuartForm
     End Sub
 
     Private Sub SerialPort_DataReceived(sender As Object, e As SerialDataReceivedEventArgs) Handles SerialPort.DataReceived
-        Thread.Sleep(5)
+        Thread.Sleep(3)
         Dim data(SerialPort.BytesToRead) As Byte
         SerialPort.Read(data, 0, SerialPort.BytesToRead)
         '' may need to add a delay to reading the data
