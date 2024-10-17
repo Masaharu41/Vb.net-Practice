@@ -29,6 +29,7 @@ Partial Class EuartForm
         Me.ExitButton = New System.Windows.Forms.Button()
         Me.DisplayLabel = New System.Windows.Forms.Label()
         Me.ScanTimer = New System.Windows.Forms.Timer(Me.components)
+        Me.PortLabel = New System.Windows.Forms.Label()
         CType(Me.PwTrackBar, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -75,11 +76,21 @@ Partial Class EuartForm
         Me.ScanTimer.Enabled = True
         Me.ScanTimer.Interval = 500
         '
+        'PortLabel
+        '
+        Me.PortLabel.AutoSize = True
+        Me.PortLabel.Location = New System.Drawing.Point(583, 282)
+        Me.PortLabel.Name = "PortLabel"
+        Me.PortLabel.Size = New System.Drawing.Size(77, 25)
+        Me.PortLabel.TabIndex = 4
+        Me.PortLabel.Text = "Label1"
+        '
         'EuartForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(12.0!, 25.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 583)
+        Me.Controls.Add(Me.PortLabel)
         Me.Controls.Add(Me.DisplayLabel)
         Me.Controls.Add(Me.ExitButton)
         Me.Controls.Add(Me.SendButton)
@@ -98,4 +109,5 @@ Partial Class EuartForm
     Friend WithEvents ExitButton As Button
     Friend WithEvents DisplayLabel As Label
     Friend WithEvents ScanTimer As Timer
+    Friend WithEvents PortLabel As Label
 End Class

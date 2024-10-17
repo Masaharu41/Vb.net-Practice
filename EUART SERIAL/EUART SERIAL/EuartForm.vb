@@ -9,16 +9,61 @@ Public Class EuartForm
     Dim sent(0) As Byte
     Dim msb As Byte
     Dim lsb As Byte
+    Dim port As Boolean
     Private Sub SerialCom_Load(sender As Object, e As EventArgs) Handles Me.Load
-        SerialPort.PortName = "COM6"
-        SerialPort.BaudRate = 9600
-        Try
+        'SerialPort.PortName = "COM6"
+        'SerialPort.BaudRate = 9600
+        'Try
 
-            SerialPort.Open()
-        Catch ex As Exception
-            MsgBox("A valid com device could not be detected")
-        End Try
+        '    SerialPort.Open()
+        'Catch ex As Exception
+        '    MsgBox("A valid com device could not be detected")
+        'End Try
+        OpenPort()
     End Sub
+
+    Sub OpenPort(Optional force As Boolean = False)
+        Dim portValid As Boolean = False
+        Dim portName As String
+        ' auto test "all" COM port values until a valid connection or nothing reports back
+        If force = True Then
+            Try
+                ' portName = ComComboBox.Text
+                SerialPort.PortName = portName
+                SerialPort.BaudRate = 9600
+                SerialPort.Open()
+                portValid = True
+            Catch ex As Exception
+                portValid = False
+            End Try
+        Else
+            For i = 0 To 50
+                portName = $"COM{i}"
+                Try
+                    SerialPort.PortName = portName
+                    SerialPort.BaudRate = 9600
+                    SerialPort.Open()
+                    portValid = True
+                    Exit For
+                Catch ex As Exception
+                    ' MsgBox("Com was not Valid")
+                    portValid = False
+
+                End Try
+            Next
+        End If
+
+        If portValid = True Then
+            PortLabel.Text = "Port Is Open"
+            ' ComComboBox.SelectedText = portName
+            port = True
+        Else
+            PortLabel.Text = "Port Is Closed"
+            port = False
+        End If
+    End Sub
+
+
 
     Private Sub SendButton_Click(sender As Object, e As EventArgs) Handles SendButton.Click
         SendData()
@@ -161,6 +206,12 @@ Public Class EuartForm
     End Sub
 
     Private Sub ScanTimer_Tick(sender As Object, e As EventArgs) Handles ScanTimer.Tick
-        SendData()
+        If port Then
+            SendData()
+            TimerRestart()
+        Else
+            ScanTimer.Enabled = False
+
+        End If
     End Sub
 End Class
