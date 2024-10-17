@@ -22,7 +22,14 @@ Public Class EuartForm
 
     Private Sub SendButton_Click(sender As Object, e As EventArgs) Handles SendButton.Click
         SendData()
+        TimerRestart()
         'DummyData()
+    End Sub
+
+    Sub TimerRestart()
+        ScanTimer.Stop()
+        ScanTimer.Interval = 250
+        ScanTimer.Start()
     End Sub
     Sub DummyData()
         'Gives an alternating output. makes seeing baud easier
@@ -72,11 +79,35 @@ Public Class EuartForm
     End Function
 
     Sub DisplayTemp()
-        Dim temp As Single = ConvertVtoF()
-        If Me.DisplayLabel.InvokeRequired Then
-            Me.DisplayLabel.Invoke(New MethodInvoker(Sub() DisplayLabel.Text = CStr(temp)))
+        Dim temp(4) As Single
+        Static runCnt As Integer
+        Dim avResult As Single
+        ConvertVtoF()
+        If runCnt = 0 Then
+            temp(0) = ConvertVtoF()
+            runCnt += 1
+        ElseIf runCnt = 1 Then
+            temp(1) = ConvertVtoF()
+            runCnt += 1
+        ElseIf runCnt = 2 Then
+            temp(2) = ConvertVtoF()
+            runCnt += 1
+        ElseIf runCnt = 3 Then
+            temp(3) = ConvertVtoF()
+            runCnt += 1
+        ElseIf runCnt = 4 Then
+            temp(4) = ConvertVtoF()
+            runCnt += 1
         Else
-            DisplayLabel.Text = "New Text"
+            For i = 0 To UBound(temp)
+                avResult += temp(i)
+            Next
+            avResult = avResult / UBound(temp)
+            If Me.DisplayLabel.InvokeRequired Then
+                Me.DisplayLabel.Invoke(New MethodInvoker(Sub() DisplayLabel.Text = CStr(avResult)))
+            Else
+                DisplayLabel.Text = "New Text"
+            End If
         End If
     End Sub
 
@@ -97,9 +128,14 @@ Public Class EuartForm
         Dim data(SerialPort.BytesToRead) As Byte
         SerialPort.Read(data, 0, SerialPort.BytesToRead)
         '' may need to add a delay to reading the data
-        sent(0) = data(0)
-        msb = data(1)
-        lsb = data(2)
+        Try
+
+            sent(0) = data(0)
+            msb = data(1)
+            lsb = data(2)
+        Catch ex As Exception
+
+        End Try
         ReadRecieved()
     End Sub
 
