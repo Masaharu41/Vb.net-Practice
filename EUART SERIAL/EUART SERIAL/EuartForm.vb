@@ -11,14 +11,7 @@ Public Class EuartForm
     Dim lsb As Byte
     Dim port As Boolean
     Private Sub SerialCom_Load(sender As Object, e As EventArgs) Handles Me.Load
-        'SerialPort.PortName = "COM6"
-        'SerialPort.BaudRate = 9600
-        'Try
 
-        '    SerialPort.Open()
-        'Catch ex As Exception
-        '    MsgBox("A valid com device could not be detected")
-        'End Try
         OpenPort()
     End Sub
 
@@ -90,9 +83,16 @@ Public Class EuartForm
     Sub SendData()
         Dim pulse As Byte = PulseWidth()
         Dim data(2) As Byte
+        Static adcSel As Boolean
         data(0) = &H24
         data(1) = pulse ' Xor &HFF ' gives the complement of the byte value
-        data(2) = &H1
+        If adcSel Then
+            data(2) = &H1
+            adcSel = False
+        Else
+            data(2) = &H2
+            adcSel = True
+        End If
 
         SerialPort.Write(data, 0, 3)
 
@@ -114,7 +114,7 @@ Public Class EuartForm
     Function ConvertVtoF() As Single
         Dim totalCnt As Integer
         Dim f As Single
-        Dim res As Single = 0.004887
+        Dim res As Single = 0.00391
         totalCnt = (CInt(msb) * 4) + CInt(lsb)
 
         f = res * totalCnt * 100
@@ -150,6 +150,7 @@ Public Class EuartForm
             avResult = avResult / UBound(temp)
             If Me.DisplayLabel.InvokeRequired Then
                 Me.DisplayLabel.Invoke(New MethodInvoker(Sub() DisplayLabel.Text = CStr(avResult)))
+                runCnt = 0
             Else
                 DisplayLabel.Text = "New Text"
             End If
@@ -181,10 +182,10 @@ Public Class EuartForm
             sent(0) = data(0)
             msb = data(1)
             lsb = data(2)
+            ReadRecieved()
         Catch ex As Exception
 
         End Try
-        ReadRecieved()
     End Sub
 
 

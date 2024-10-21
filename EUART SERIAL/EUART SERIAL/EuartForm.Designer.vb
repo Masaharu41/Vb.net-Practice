@@ -30,6 +30,8 @@ Partial Class EuartForm
         Me.DisplayLabel = New System.Windows.Forms.Label()
         Me.ScanTimer = New System.Windows.Forms.Timer(Me.components)
         Me.PortLabel = New System.Windows.Forms.Label()
+        Me.TempLabel = New System.Windows.Forms.Label()
+        Me.Label = New System.Windows.Forms.Label()
         CType(Me.PwTrackBar, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -79,17 +81,37 @@ Partial Class EuartForm
         'PortLabel
         '
         Me.PortLabel.AutoSize = True
-        Me.PortLabel.Location = New System.Drawing.Point(583, 282)
+        Me.PortLabel.Location = New System.Drawing.Point(30, 290)
         Me.PortLabel.Name = "PortLabel"
         Me.PortLabel.Size = New System.Drawing.Size(77, 25)
         Me.PortLabel.TabIndex = 4
         Me.PortLabel.Text = "Label1"
+        '
+        'TempLabel
+        '
+        Me.TempLabel.AutoSize = True
+        Me.TempLabel.Location = New System.Drawing.Point(30, 202)
+        Me.TempLabel.Name = "TempLabel"
+        Me.TempLabel.Size = New System.Drawing.Size(213, 25)
+        Me.TempLabel.TabIndex = 5
+        Me.TempLabel.Text = "Degrees In Farenheit"
+        '
+        'Label
+        '
+        Me.Label.AutoSize = True
+        Me.Label.Location = New System.Drawing.Point(30, 265)
+        Me.Label.Name = "Label"
+        Me.Label.Size = New System.Drawing.Size(118, 25)
+        Me.Label.TabIndex = 6
+        Me.Label.Text = "Port Status"
         '
         'EuartForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(12.0!, 25.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 583)
+        Me.Controls.Add(Me.Label)
+        Me.Controls.Add(Me.TempLabel)
         Me.Controls.Add(Me.PortLabel)
         Me.Controls.Add(Me.DisplayLabel)
         Me.Controls.Add(Me.ExitButton)
@@ -110,4 +132,6 @@ Partial Class EuartForm
     Friend WithEvents DisplayLabel As Label
     Friend WithEvents ScanTimer As Timer
     Friend WithEvents PortLabel As Label
+    Friend WithEvents TempLabel As Label
+    Friend WithEvents Label As Label
 End Class
