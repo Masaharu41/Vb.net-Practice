@@ -32,6 +32,9 @@ Partial Class EuartForm
         Me.PortLabel = New System.Windows.Forms.Label()
         Me.TempLabel = New System.Windows.Forms.Label()
         Me.Label = New System.Windows.Forms.Label()
+        Me.ServoLabel = New System.Windows.Forms.Label()
+        Me.HumidtyLabel = New System.Windows.Forms.Label()
+        Me.HumidDisplayLabel = New System.Windows.Forms.Label()
         CType(Me.PwTrackBar, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -40,7 +43,7 @@ Partial Class EuartForm
         '
         'PwTrackBar
         '
-        Me.PwTrackBar.Location = New System.Drawing.Point(35, 26)
+        Me.PwTrackBar.Location = New System.Drawing.Point(35, 57)
         Me.PwTrackBar.Maximum = 20
         Me.PwTrackBar.Name = "PwTrackBar"
         Me.PwTrackBar.Size = New System.Drawing.Size(742, 90)
@@ -48,7 +51,7 @@ Partial Class EuartForm
         '
         'SendButton
         '
-        Me.SendButton.Location = New System.Drawing.Point(35, 122)
+        Me.SendButton.Location = New System.Drawing.Point(35, 146)
         Me.SendButton.Name = "SendButton"
         Me.SendButton.Size = New System.Drawing.Size(155, 46)
         Me.SendButton.TabIndex = 1
@@ -57,7 +60,7 @@ Partial Class EuartForm
         '
         'ExitButton
         '
-        Me.ExitButton.Location = New System.Drawing.Point(196, 122)
+        Me.ExitButton.Location = New System.Drawing.Point(196, 146)
         Me.ExitButton.Name = "ExitButton"
         Me.ExitButton.Size = New System.Drawing.Size(153, 46)
         Me.ExitButton.TabIndex = 2
@@ -75,7 +78,6 @@ Partial Class EuartForm
         '
         'ScanTimer
         '
-        Me.ScanTimer.Enabled = True
         Me.ScanTimer.Interval = 500
         '
         'PortLabel
@@ -105,11 +107,41 @@ Partial Class EuartForm
         Me.Label.TabIndex = 6
         Me.Label.Text = "Port Status"
         '
+        'ServoLabel
+        '
+        Me.ServoLabel.AutoSize = True
+        Me.ServoLabel.Location = New System.Drawing.Point(30, 9)
+        Me.ServoLabel.Name = "ServoLabel"
+        Me.ServoLabel.Size = New System.Drawing.Size(133, 25)
+        Me.ServoLabel.TabIndex = 7
+        Me.ServoLabel.Text = "Servo Throw"
+        '
+        'HumidtyLabel
+        '
+        Me.HumidtyLabel.AutoSize = True
+        Me.HumidtyLabel.Location = New System.Drawing.Point(272, 202)
+        Me.HumidtyLabel.Name = "HumidtyLabel"
+        Me.HumidtyLabel.Size = New System.Drawing.Size(95, 25)
+        Me.HumidtyLabel.TabIndex = 8
+        Me.HumidtyLabel.Text = "Humidity"
+        '
+        'HumidDisplayLabel
+        '
+        Me.HumidDisplayLabel.AutoSize = True
+        Me.HumidDisplayLabel.Location = New System.Drawing.Point(272, 236)
+        Me.HumidDisplayLabel.Name = "HumidDisplayLabel"
+        Me.HumidDisplayLabel.Size = New System.Drawing.Size(77, 25)
+        Me.HumidDisplayLabel.TabIndex = 9
+        Me.HumidDisplayLabel.Text = "Label1"
+        '
         'EuartForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(12.0!, 25.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 583)
+        Me.Controls.Add(Me.HumidDisplayLabel)
+        Me.Controls.Add(Me.HumidtyLabel)
+        Me.Controls.Add(Me.ServoLabel)
         Me.Controls.Add(Me.Label)
         Me.Controls.Add(Me.TempLabel)
         Me.Controls.Add(Me.PortLabel)
@@ -134,4 +166,7 @@ Partial Class EuartForm
     Friend WithEvents PortLabel As Label
     Friend WithEvents TempLabel As Label
     Friend WithEvents Label As Label
+    Friend WithEvents ServoLabel As Label
+    Friend WithEvents HumidtyLabel As Label
+    Friend WithEvents HumidDisplayLabel As Label
 End Class

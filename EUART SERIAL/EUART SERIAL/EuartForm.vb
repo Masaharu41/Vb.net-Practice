@@ -4,6 +4,7 @@ Imports System.Runtime.InteropServices
 Imports System.Text
 Imports System.Threading
 
+
 Public Class EuartForm
 
     Dim sent(0) As Byte
@@ -39,7 +40,7 @@ Public Class EuartForm
                     portValid = True
                     Exit For
                 Catch ex As Exception
-                    ' MsgBox("Com was not Valid")
+
                     portValid = False
 
                 End Try
@@ -48,7 +49,6 @@ Public Class EuartForm
 
         If portValid = True Then
             PortLabel.Text = "Port Is Open"
-            ' ComComboBox.SelectedText = portName
             port = True
         Else
             PortLabel.Text = "Port Is Closed"
@@ -60,7 +60,7 @@ Public Class EuartForm
 
     Private Sub SendButton_Click(sender As Object, e As EventArgs) Handles SendButton.Click
         SendData()
-        '  TimerRestart()
+        TimerRestart()
         'DummyData()
     End Sub
 
@@ -83,16 +83,11 @@ Public Class EuartForm
     Sub SendData()
         Dim pulse As Byte = PulseWidth()
         Dim data(2) As Byte
-        Static adcSel As Boolean
+        ' Static adcSel As Boolean
         data(0) = &H24
         data(1) = pulse ' Xor &HFF ' gives the complement of the byte value
-        If adcSel Then
-            data(2) = &H1
-            adcSel = False
-        Else
-            data(2) = &H2
-            adcSel = True
-        End If
+
+        data(2) = &H1
 
         SerialPort.Write(data, 0, 3)
 
@@ -189,22 +184,26 @@ Public Class EuartForm
     End Sub
 
 
+
     Sub ReadRecieved()
         ' Validates that the data recieved has a valid start character
         ' then proceeds to shift the lsb and display the recieved data
-        ' gives an output regardless to show what is sent in
+        ' gives an output to console regardless to show what is sent in
         If Encoding.ASCII.GetString(sent) = "$" Then
             lsb = lsb >> 6
 
             ' DisplayLabel.Text = CStr(msb) & CStr(lsb)
             Console.WriteLine(CStr(msb))
             Console.WriteLine(CStr(lsb))
-            DisplayTemp()
-        Else
-            'DisplayLabel.Text = CStr(sent) & " " & CStr(msb) & " " & CStr(lsb)
-            Console.WriteLine(CStr(sent(0)))
-            Console.WriteLine(CStr(msb))
-            Console.WriteLine(CStr(lsb))
+            If CInt(msb + lsb) = 258 Then
+
+                DisplayTemp()
+            Else
+
+                Console.WriteLine(CStr(msb))
+                Console.WriteLine(CStr(lsb))
+            End If
+
         End If
 
     End Sub
@@ -218,4 +217,6 @@ Public Class EuartForm
 
         End If
     End Sub
+
+
 End Class
